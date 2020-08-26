@@ -25,7 +25,7 @@ const PaginatedTable: FC<PaginatedTableProps> = ({ dataEntries }) => {
         <p>No.</p>
         <p>Name</p>
       </div>
-      {renderData()}
+      <div data-testid="users">{renderData()}</div>
     </div>
   )
 }

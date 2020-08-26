@@ -46,11 +46,11 @@ const Pagination: FC<PaginationProps> = ({ paginationState, paginationActions })
   return (
     <div className={styles.paginationContainer}>
       <button onClick={paginationActions.goToFirstPage}>GO TO FIRST</button>
-      <button onClick={paginationActions.goToPrevPage}>
+      <button onClick={paginationActions.goToPrevPage} data-testid="goToPrevPage">
         <i className="fas fa-chevron-left"></i>
       </button>
-      {renderPagination}
-      <button onClick={paginationActions.goToNextPage}>
+      <div data-testid="goToPageButtons">{renderPagination}</div>
+      <button onClick={paginationActions.goToNextPage} data-testid="goToNextPage">
         <i className="fas fa-chevron-right"></i>
       </button>
       <button onClick={paginationActions.goToLastPage}>GO TO LAST</button>

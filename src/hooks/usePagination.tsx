@@ -34,11 +34,11 @@ const usePagination = (dataEntries: User[], elementsOnPage = 50) => {
   }
 
   const goToPrevPage = () => {
-    setActualPageIdx((actualPageIdx) => Math.max(actualPageIdx - 1, 1))
+    setActualPageIdx((actualPageIdx) => actualPageIdx === 1 ? actualPageIdx : actualPageIdx-1)
   }
 
   const goToNextPage = () => {
-    setActualPageIdx((actualPageIdx) => Math.min(actualPageIdx + 1, lastPageIdx))
+    setActualPageIdx((actualPageIdx) => actualPageIdx === lastPageIdx ? actualPageIdx : actualPageIdx+1)
   }
 
   const paginationState = {
