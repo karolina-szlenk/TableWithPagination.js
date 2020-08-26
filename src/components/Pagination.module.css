@@ -1,0 +1,16 @@
+.paginationContainer {
+  margin: 20px auto;
+}
+
+.paginationStyle {
+  background-color: buttonface;
+}
+
+.actualIdxStyle {
+  background-color: blue;
+  color: white;
+}
+
+.btnStyle {
+  cursor: pointer;
+}

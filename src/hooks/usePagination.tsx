@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { User } from '../myModule'
 
-interface User {
-  id: number
-  first_name: string
-}
-
-const usePagination = (dataEntries: User[], elementsOnPage = 10) => {
+const usePagination = (dataEntries: User[], elementsOnPage = 50) => {
   const [actualPageIdx, setActualPageIdx] = useState(1)
   const lastPageIdx = Math.ceil(dataEntries.length / elementsOnPage)
   const [isBusy, setIsBusy] = useState(false)

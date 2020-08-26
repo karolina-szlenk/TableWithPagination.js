@@ -1,0 +1,12 @@
+.tableStyle {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  margin: 1px auto;
+  padding: 0 10px;
+  width: 30%;
+}
+
+.headStyle {
+  background-color: lightblue;
+}

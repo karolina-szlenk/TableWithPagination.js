@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import styles from './Pagination.module.css'
 
 interface PaginationProps {
   paginationState: {
@@ -15,21 +16,6 @@ interface PaginationProps {
 }
 
 const Pagination: FC<PaginationProps> = ({ paginationState, paginationActions }) => {
-  const paginationStyle = {
-    border: '1px solid black',
-    padding: '0 5px',
-  }
-
-  const actualIdxStyle = {
-    border: '1px solid red',
-    padding: '0 5px',
-  }
-
-  const linkStyle = {
-    textDecoration: 'none',
-    color: 'black',
-  }
-
   const pageNumbers = []
 
   for (let i = 1; i <= paginationState.lastPageIdx; i++) {
@@ -37,22 +23,36 @@ const Pagination: FC<PaginationProps> = ({ paginationState, paginationActions })
   }
 
   const renderPagination = pageNumbers.map((number) => (
-    <span
+    <button
       key={number}
-      style={paginationState.actualPageIdx === number ? actualIdxStyle : paginationStyle}
+      onClick={() => paginationActions.goToPage(number)}
+      className={
+        paginationState.actualPageIdx === number ? styles.actualIdxStyle : styles.paginationStyle
+      }
     >
-      <a onClick={() => paginationActions.goToPage(number)} style={linkStyle} href="!#">
-        {number}
-      </a>
-    </span>
+      {number}
+    </button>
   ))
 
+  const addStyleToBtn = () => {
+    const buttons = document.querySelectorAll('button')
+    buttons.forEach((btn) => {
+      btn.classList.add(styles.btnStyle)
+    })
+  }
+
+  addStyleToBtn()
+
   return (
-    <div>
+    <div className={styles.paginationContainer}>
       <button onClick={paginationActions.goToFirstPage}>GO TO FIRST</button>
-      <button onClick={paginationActions.goToPrevPage}>PREV</button>
+      <button onClick={paginationActions.goToPrevPage}>
+        <i className="fas fa-chevron-left"></i>
+      </button>
       {renderPagination}
-      <button onClick={paginationActions.goToNextPage}>NEXT</button>
+      <button onClick={paginationActions.goToNextPage}>
+        <i className="fas fa-chevron-right"></i>
+      </button>
       <button onClick={paginationActions.goToLastPage}>GO TO LAST</button>
     </div>
   )
